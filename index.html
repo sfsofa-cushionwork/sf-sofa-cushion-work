@@ -138,18 +138,22 @@ footer{background:#080e18;text-align:center;padding:22px;color:#ccc}
   }
 
   async function loadOwnerPhotos(){
+    const {data:sessionData} = await client.auth.getSession();
+    const allowDelete = isOwner(sessionData?.session?.user);
     const {data, error} = await client.storage.from(BUCKET).list('', {
       limit:100, sortBy:{column:'created_at',order:'desc'}
     });
+    gallery.innerHTML = '';
     if(error){
-      showStatus('Gallery list nahi ho saki. Supabase Storage ki SELECT/LIST policy check karni hogi. ' + error.message);
+      // Keep the known public image visible even if listing permission is unavailable.
+      addPhotoCard('Our Sofa Work', knownUrl, false);
+      if(allowDelete) showStatus('Photo list nahi ho saki: ' + error.message);
       return;
     }
-    gallery.innerHTML = '';
     const items = (data || []).filter(x => x.name && !x.name.endsWith('/'));
     for(const item of items){
       const {data:urlData} = client.storage.from(BUCKET).getPublicUrl(item.name);
-      addPhotoCard(item.name, urlData.publicUrl, true);
+      addPhotoCard(item.name, urlData.publicUrl, allowDelete);
     }
     if(!items.some(x => x.name === 'IMG_0138.jpeg')){
       addPhotoCard('Our Sofa Work', knownUrl, false);
@@ -206,6 +210,7 @@ footer{background:#080e18;text-align:center;padding:22px;color:#ccc}
     await client.auth.signOut(); showStatus('Logout ho gaya.'); await updateAuthUI();
   });
   updateAuthUI();
+  loadOwnerPhotos(); // Load public gallery for visitors without requiring owner login.
 })();
 </script>
 </body>
