@@ -8,37 +8,44 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#101827;color:#fff}
 header{background:#09111f;text-align:center;padding:25px 15px;border-bottom:2px solid #c9a45c}
-header h1{color:#e5c47b;font-size:30px;margin:5px}
+header h1{color:#e5c47b;font-size:clamp(22px,5vw,30px);margin:5px}
 header p{color:#ddd}
-nav{padding:15px;text-align:center;background:#172337}
-nav a{color:#f3d18a;margin:8px;text-decoration:none;display:inline-block}
-.hero{text-align:center;padding:55px 20px;background:linear-gradient(135deg,#172337,#354967)}
-.hero h2{font-size:34px;color:#f3d18a}
+nav{padding:12px;text-align:center;background:#172337}
+nav a{color:#f3d18a;margin:7px;text-decoration:none;display:inline-block}
+.hero{text-align:center;padding:45px 18px;background:linear-gradient(135deg,#172337,#354967)}
+.hero h2{font-size:clamp(26px,6vw,34px);color:#f3d18a}
 .hero p{font-size:18px;line-height:1.6}
-.btn{display:inline-block;background:#d5ad63;color:#111;padding:14px 22px;border-radius:6px;text-decoration:none;font-weight:bold;margin:8px}
-section{padding:35px 18px;text-align:center}
+.btn{display:inline-block;background:#d5ad63;color:#111;padding:13px 19px;border-radius:6px;text-decoration:none;font-weight:bold;margin:7px;border:0;cursor:pointer}
+section{padding:32px 16px;text-align:center}
 h2{color:#e5c47b}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:700px;margin:auto}
-.card{background:#1d2a3e;padding:20px 10px;border-radius:10px;border:1px solid #536078}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:700px;margin:auto}
+.card,.photo-card{background:#1d2a3e;padding:16px 12px;border-radius:10px;border:1px solid #536078}
 .card h3{color:#f3d18a}
-.contact{background:#1a2638;line-height:2}
+.contact{background:#1a2638;line-height:1.8}
 footer{background:#080e18;text-align:center;padding:22px;color:#ccc}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:15px;max-width:1000px;margin:20px auto}
+.photo-card{padding:10px;overflow:hidden}
+.photo-card img{width:100%;height:240px;object-fit:cover;border-radius:8px}
+.photo-card p{overflow-wrap:anywhere;color:#ddd}
+#ownerPanel{display:none;background:#172337;padding:20px;margin:18px auto;max-width:700px;border:1px solid #c9a45c;border-radius:12px;text-align:left}
+#ownerPanel input{display:block;width:100%;padding:12px;margin:10px 0;border-radius:6px;border:1px solid #8894a7;background:#fff;color:#111}
+#status{white-space:pre-wrap;color:#f3d18a;overflow-wrap:anywhere}
+.delete-btn{background:#d9534f;color:white;border:0;padding:10px;border-radius:6px;cursor:pointer}
+.small{font-size:13px;color:#ccc;line-height:1.5}
+@media(max-width:520px){.cards{grid-template-columns:1fr}.hero h2{font-size:27px}}
 </style>
 </head>
 <body>
 <header>
-<h1>S.F SOFA & CUSHION WORK</h1>
+<h1>S.F SOFA &amp; CUSHION WORK</h1>
 <p>Premium Custom Sofas • Designer Cushions • Upholstery</p>
 </header>
 <nav>
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#about">About Us</a>
-<a href="#contact">Contact</a>
+<a href="#home">Home</a><a href="#services">Services</a><a href="#about">About Us</a><a href="#work">Our Work</a><a href="#contact">Contact</a>
 </nav>
 <div class="hero" id="home">
 <h2>Give Your Home a Luxury Look</h2>
-<p>Custom Sofa Making, Cushion Work & Home Furnishing Solutions in Hadapsar, Pune.</p>
+<p>Custom Sofa Making, Cushion Work &amp; Home Furnishing Solutions in Hadapsar, Pune.</p>
 <a class="btn" href="https://wa.me/917892325415">WhatsApp Us</a>
 <a class="btn" href="tel:7066637488">Call Now</a>
 </div>
@@ -53,20 +60,153 @@ footer{background:#080e18;text-align:center;padding:22px;color:#ccc}
 </section>
 <section id="about">
 <h2>About Our Shop</h2>
-<p>At S.F Sofa & Cushion Work, we help make your home more comfortable with custom sofa and cushion solutions.</p>
+<p>At S.F Sofa &amp; Cushion Work, we help make your home more comfortable with custom sofa and cushion solutions.</p>
+</section>
+<section id="work">
+<h2>Our Sofa Work</h2>
+<p>See our sofa and cushion projects.</p>
+<div id="gallery" class="gallery">
+<div class="photo-card"><img src="https://squsrbrxaqbzdgdhugzc.supabase.co/storage/v1/object/public/work-photos/IMG_0138.jpeg" alt="Sofa Work"><p>Our Sofa Work</p></div>
+</div>
 </section>
 <section class="contact" id="contact">
 <h2>Contact Us</h2>
-<p><b>Firoz Khan</b></p>
-<p>📞 7892325415</p>
-<p>📞 7066637488</p>
+<p><b>Firoz Khan</b></p><p>📞 7892325415</p><p>📞 7066637488</p>
 <p>📍 Sr. No. 63/1A/2A, Opp. ARV Royale Society,<br>Handewadi Road, Hadapsar, Pune - 411028</p>
 <a class="btn" href="https://wa.me/917892325415">Chat on WhatsApp</a>
 </section>
-<footer>© S.F Sofa & Cushion Work | Hadapsar, Pune</footer>
-<div style="text-align:center; padding:20px;">
-  <h2>Our Sofa Work</h2>
-  <img src="https://squsrbrxaqbzdgdhugzc.supabase.co/storage/v1/object/public/work-photos/IMG_0138.jpeg" alt="Sofa Work" style="width:100%; max-width:500px; height:auto; border-radius:12px;">
+<section>
+<button class="btn" id="ownerToggle" type="button">Owner Login</button>
+<div id="ownerPanel">
+<h2>Owner Photo Panel</h2>
+<p class="small">Owner account only. Customers can view photos but cannot upload or delete them.</p>
+<div id="loginForm">
+<label for="ownerEmail">Owner email</label>
+<input id="ownerEmail" type="email" autocomplete="username" placeholder="Owner email">
+<label for="ownerPassword">Owner password</label>
+<input id="ownerPassword" type="password" autocomplete="current-password" placeholder="Owner password">
+<button class="btn" id="loginBtn" type="button">Login</button>
 </div>
+<div id="uploadArea" style="display:none">
+<p id="signedInLabel"></p>
+<input id="photoInput" type="file" accept="image/*">
+<button class="btn" id="uploadBtn" type="button">Upload Photo</button>
+<button class="btn" id="refreshBtn" type="button">Refresh Photos</button>
+<button class="btn" id="logoutBtn" type="button">Logout</button>
+</div>
+<p id="status" role="status"></p>
+</div>
+</section>
+<footer>© S.F Sofa &amp; Cushion Work | Hadapsar, Pune</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(() => {
+  const SUPABASE_URL = 'https://squsrbrxaqbzdgdhugzc.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_3KADr87cCK1PEAC6pHGmUA_D9gnn-1e';
+  const OWNER_UID = 'af89e5bf-3629-4ae0-b557-8bf758dff137';
+  const BUCKET = 'work-photos';
+  const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  const $ = id => document.getElementById(id);
+  const panel = $('ownerPanel'), status = $('status'), gallery = $('gallery');
+  const knownUrl = SUPABASE_URL + '/storage/v1/object/public/' + BUCKET + '/IMG_0138.jpeg';
+
+  $('ownerToggle').addEventListener('click', () => {
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    status.textContent = '';
+  });
+  function showStatus(message){ status.textContent = message; }
+  function isOwner(user){ return !!user && user.id === OWNER_UID; }
+
+  function addPhotoCard(name, url, allowDelete){
+    const card = document.createElement('div'); card.className = 'photo-card';
+    const img = document.createElement('img'); img.src = url; img.alt = 'Sofa and cushion work';
+    const caption = document.createElement('p'); caption.textContent = name || 'Our Sofa Work';
+    card.append(img, caption);
+    if(allowDelete){
+      const del = document.createElement('button'); del.className = 'delete-btn';
+      del.type = 'button'; del.textContent = 'Delete Photo';
+      del.addEventListener('click', async () => {
+        if(!confirm('Is photo ko delete karna hai?')) return;
+        showStatus('Photo delete ho rahi hai...');
+        const {error} = await client.storage.from(BUCKET).remove([name]);
+        if(error){showStatus('Delete nahi hua: ' + error.message);return;}
+        showStatus('Photo delete ho gayi.'); await loadOwnerPhotos();
+      });
+      card.appendChild(del);
+    }
+    gallery.appendChild(card);
+  }
+
+  async function loadOwnerPhotos(){
+    const {data, error} = await client.storage.from(BUCKET).list('', {
+      limit:100, sortBy:{column:'created_at',order:'desc'}
+    });
+    if(error){
+      showStatus('Gallery list nahi ho saki. Supabase Storage ki SELECT/LIST policy check karni hogi. ' + error.message);
+      return;
+    }
+    gallery.innerHTML = '';
+    const items = (data || []).filter(x => x.name && !x.name.endsWith('/'));
+    for(const item of items){
+      const {data:urlData} = client.storage.from(BUCKET).getPublicUrl(item.name);
+      addPhotoCard(item.name, urlData.publicUrl, true);
+    }
+    if(!items.some(x => x.name === 'IMG_0138.jpeg')){
+      addPhotoCard('Our Sofa Work', knownUrl, false);
+    }
+  }
+
+  async function updateAuthUI(){
+    const {data, error} = await client.auth.getSession();
+    if(error) showStatus(error.message);
+    const user = data?.session?.user;
+    if(isOwner(user)){
+      $('loginForm').style.display = 'none';
+      $('uploadArea').style.display = 'block';
+      $('signedInLabel').textContent = 'Logged in as owner.';
+    }else{
+      $('loginForm').style.display = 'block';
+      $('uploadArea').style.display = 'none';
+      if(user){await client.auth.signOut();showStatus('This account is not authorized as the owner.');}
+    }
+  }
+
+  $('loginBtn').addEventListener('click', async () => {
+    const email = $('ownerEmail').value.trim(), password = $('ownerPassword').value;
+    if(!email || !password){showStatus('Owner email aur password bharo.');return;}
+    showStatus('Login ho raha hai...');
+    const {data, error} = await client.auth.signInWithPassword({email,password});
+    if(error){showStatus('Login nahi hua: ' + error.message);return;}
+    if(!isOwner(data.user)){await client.auth.signOut();showStatus('Ye owner account nahi hai.');return;}
+    showStatus('Owner login successful.');
+    await updateAuthUI();
+    await loadOwnerPhotos();
+  });
+
+  $('uploadBtn').addEventListener('click', async () => {
+    const {data:sessionData} = await client.auth.getSession();
+    if(!isOwner(sessionData?.session?.user)){showStatus('Pehle owner login karo.');return;}
+    const file = $('photoInput').files[0];
+    if(!file){showStatus('Pehle photo select karo.');return;}
+    if(!file.type.startsWith('image/')){showStatus('Sirf image file upload karo.');return;}
+    if(file.size > 8*1024*1024){showStatus('Photo 8 MB se chhoti honi chahiye.');return;}
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+    const path = Date.now() + '-' + safeName;
+    showStatus('Photo upload ho rahi hai...');
+    const {error} = await client.storage.from(BUCKET).upload(path,file,{
+      cacheControl:'3600',upsert:false,contentType:file.type
+    });
+    if(error){showStatus('Upload nahi hua: ' + error.message);return;}
+    $('photoInput').value = '';
+    showStatus('Photo upload ho gayi!');
+    await loadOwnerPhotos();
+  });
+  $('refreshBtn').addEventListener('click', loadOwnerPhotos);
+  $('logoutBtn').addEventListener('click', async () => {
+    await client.auth.signOut(); showStatus('Logout ho gaya.'); await updateAuthUI();
+  });
+  updateAuthUI();
+})();
+</script>
 </body>
 </html>
