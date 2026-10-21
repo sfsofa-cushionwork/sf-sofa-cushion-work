@@ -180,7 +180,34 @@ document.getElementById('logoutBtn').addEventListener('click', async function() 
   document.getElementById('uploadArea').style.display = 'none';
   statusBox.textContent = 'Logged out.';
 });
+// Refresh the gallery after uploading a photo
+const gallery = document.querySelector('.gallery');
+const uploadButton = document.getElementById('uploadBtn');
 
+uploadButton.addEventListener('click', async function() {
+  setTimeout(async function() {
+    const { data } = await client.storage
+      .from(BUCKET)
+      .list('', { sortBy: { column: 'created_at', order: 'desc' } });
+
+    if (!data) return;
+
+    data.forEach(function(file) {
+      if (!file.name) return;
+
+      const { data: urlData } = client.storage
+        .from(BUCKET)
+        .getPublicUrl(file.name);
+
+      if (!gallery.querySelector('img[src="' + urlData.publicUrl + '"]')) {
+        const img = document.createElement('img');
+        img.src = urlData.publicUrl;
+        img.alt = 'Sofa Work';
+        gallery.appendChild(img);
+      }
+    });
+  }, 2000);
+});
 </script>
 </body>
 </html>
